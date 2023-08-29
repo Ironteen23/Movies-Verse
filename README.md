@@ -1,8 +1,8 @@
-#This is a Basic Netflix project , where the tech-STACK used is React for Front-End and SpringBoot for Backend
+# This is a Basic Netflix project , where the tech-STACK used is React for Front-End and SpringBoot for Backend
 
-#Below is the procedure to start the project 
+# Below is the procedure to start the project 
 
-##First Download the Project then 
+# First Download the Project then 
 
 ### 'Start the server'
 
