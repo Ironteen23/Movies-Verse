@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 const Header = () => {
  
@@ -24,8 +24,12 @@ return (
                     <NavLink className ="nav-link" to="/">Home</NavLink>
                     <NavLink className ="nav-link" to="/watchList">Watch List</NavLink>      
                 </Nav>
+                <Link to={"/Login"}>
                 <Button variant="outline-info" className="me-2">Login</Button>
+                </Link>
+                <Link to={"/Signup"}>
                 <Button variant="outline-info">Register</Button>
+                </Link>
             </Navbar.Collapse>
         </Container>
     </Navbar>

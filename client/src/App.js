@@ -5,11 +5,12 @@
  import { useState , useEffect } from 'react';
 import './App.css';
 import Home from './components/home/Home';
-import Slide from './components/slide/Slide';
 import Carousel from 'react-material-ui-carousel';
 import Header from './components/header/Header';
 import Reviews from './components/reviews/Reviews';
 import Trailer from './components/trailer/Trailer';
+import Login from "./components/login/Login";
+import Signup from './components/signup/Signup';
 
 function App() {
 
@@ -57,6 +58,8 @@ function App() {
         <Route path="/" element={<Home movies={movies}/>}>Home</Route>
         <Route path="/Trailer/:ytTrailerId" element={<Trailer/>}></Route>
         <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews ={reviews} setReviews = {setReviews} />}></Route>
+        <Route path="/Login" element={<Login/>}></Route>
+        <Route path="/Signup" element={<Signup/>}></Route>
         </Route>
       </Routes>
     </div>
