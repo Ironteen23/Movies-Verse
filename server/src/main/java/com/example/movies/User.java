@@ -20,7 +20,7 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private List<String> fav;
+    private List<ObjectId> fav;
 
     public User(ObjectId id, String name, String email, String password) {
         this.id = id;
@@ -29,7 +29,7 @@ public class User {
         this.password = password;
     }
 
-    public User(ObjectId id, String name, String email, String password, List<String> fav) {
+    public User(ObjectId id, String name, String email, String password, List<ObjectId> fav) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -83,11 +83,11 @@ public class User {
         this.password = password;
     }
 
-    public List<String> getFav() {
+    public List<ObjectId> getFav() {
         return fav;
     }
 
-    public void setFav(List<String> fav) {
+    public void setFav(List<ObjectId> fav) {
         this.fav = fav;
     }
 }

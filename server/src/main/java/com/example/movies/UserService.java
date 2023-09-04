@@ -1,14 +1,20 @@
 package com.example.movies;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
+
+    @Autowired
+    MovieRepository movieRepository;
 
     @Autowired
     UserRepository userRepository;
@@ -52,6 +58,36 @@ public class UserService {
 
         throw new IllegalStateException("user does not exists Or Incorrect Password");
 //        System.out.println("holooa " + e);
+
+
+    }
+
+    public void addFav(Fav fav) {
+
+//        Optional<Movie> movie= movieRepository.findById(fav.getMovie_id());
+        Optional<User> user = userRepository.findById(fav.getUser_id());
+
+
+        if(user.isPresent())
+        {
+            ObjectId id = fav.getMovie_id();
+
+            List<ObjectId> arr = new ArrayList<>();
+            List<ObjectId> f = user.get().getFav();
+            if(f==null)
+            {
+                arr.add(id);
+                user.get().setFav(arr);
+            }
+
+            else {
+                f.add(id);
+                user.get().setFav(f);
+            }
+        }
+
+        System.out.println("USER IS NOT PRESENT");
+        return;
 
 
     }

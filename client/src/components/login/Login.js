@@ -8,8 +8,10 @@ import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 // import LoadingButton from '@mui/lab/LoadingButton';
 import { LoadingButton } from '@mui/lab';
+import { login } from '../../redux/slices/userSlice';
 
 const Login = () => {
 
@@ -18,9 +20,13 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+
     function redirect(){
         navigate(`/`);
     }
+
+
 
     const [user,setUser] = useState({
         name:"",password:""
@@ -29,8 +35,6 @@ const Login = () => {
     const handleSubmit = async()=>{
 
         setLoading(true);
-
-        
         try {
 
 
@@ -49,9 +53,11 @@ const Login = () => {
                     progress: undefined,
                     theme: "light",
                   });
-                
-                  setTimeout(()=>{
 
+
+                  dispatch(login({name:user.name , isLoggedIn:true , email:"hem@gmail.com"}))
+
+                  setTimeout(()=>{
                       redirect();
                   },1000)
                 return;

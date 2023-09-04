@@ -30,6 +30,13 @@ public class UserController {
         userService.login(user);
     }
 
+    @PostMapping("/addFav")
+    public void addFav(@RequestBody Fav fav)
+    {
+        userService.addFav(fav);
+    }
+
+
 
 
 
