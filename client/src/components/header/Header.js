@@ -68,8 +68,10 @@ return (
                 </>
 
                 : 
-                <>
+                <> 
+                <Link to={"/Profile"}>
                 <div style={{marginRight:"20px"}}>{user.name}</div>
+                </Link>
                 <Button variant="outline-info" onClick={()=>handleLogout()}>
                     Logout
                 </Button >

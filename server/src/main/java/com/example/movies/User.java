@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Set;
 
 @Document(collection = "users")
 @Data
@@ -20,7 +21,7 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private List<ObjectId> fav;
+    private Set<ObjectId> fav;
 
     public User(ObjectId id, String name, String email, String password) {
         this.id = id;
@@ -29,7 +30,7 @@ public class User {
         this.password = password;
     }
 
-    public User(ObjectId id, String name, String email, String password, List<ObjectId> fav) {
+    public User(ObjectId id, String name, String email, String password, Set<ObjectId> fav) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -83,11 +84,11 @@ public class User {
         this.password = password;
     }
 
-    public List<ObjectId> getFav() {
+    public Set<ObjectId> getFav() {
         return fav;
     }
 
-    public void setFav(List<ObjectId> fav) {
+    public void setFav(Set<ObjectId> fav) {
         this.fav = fav;
     }
 }

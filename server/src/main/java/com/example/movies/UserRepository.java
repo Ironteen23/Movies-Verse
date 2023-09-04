@@ -20,4 +20,8 @@ public interface UserRepository extends MongoRepository<User, ObjectId> {
 //    @Query("{$and :[{name: ?0},{password: ?1}] }")
     @Query("{name:?0 , password:?1}")
     Optional<User> existsByNameAndPass(String name , String password);
+
+
+    @Query("{_id:?0}")
+    Optional<User> findByMongoId(ObjectId userId);
 }

@@ -6,9 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -65,29 +63,66 @@ public class UserService {
     public void addFav(Fav fav) {
 
 //        Optional<Movie> movie= movieRepository.findById(fav.getMovie_id());
-        Optional<User> user = userRepository.findById(fav.getUser_id());
+//        ObjectId tp = fav.getUser_id();
 
+        String name = fav.getName();
+        Optional<User> u = userRepository.existsByName(name);
+//        User tr;
+//        System.out.println("this is the user_id " + tp);
 
-        if(user.isPresent())
+//        Optional<User> user = userRepository.findByMongoId(fav.getUser_id());
+
+        if(u.isPresent())
         {
-            ObjectId id = fav.getMovie_id();
+            ObjectId movie_id = fav.getMovie_id();
 
-            List<ObjectId> arr = new ArrayList<>();
-            List<ObjectId> f = user.get().getFav();
+            Set<ObjectId> arr = new HashSet<>();
+            Set<ObjectId> f = u.get().getFav();
+
+            User curr = u.get();
+
+
             if(f==null)
             {
-                arr.add(id);
-                user.get().setFav(arr);
+                arr.add(movie_id);
+                System.out.println("setting " + arr);
+                curr.setFav(arr);
+                userRepository.save(curr);
             }
 
             else {
-                f.add(id);
-                user.get().setFav(f);
+                f.add(movie_id);
+                System.out.println("setting 2" + f);
+                curr.setFav(f);
+                userRepository.save(curr);
             }
+
+            System.out.println("ADDED SUCCESFULLY");
+            return;
         }
 
         System.out.println("USER IS NOT PRESENT");
         return;
+    }
+
+    public Set<ObjectId> getFav(String name) {
+        Optional<User> u = userRepository.existsByName(name);
+
+        if(u.isPresent())
+        {
+            User user = u.get();
+
+            Set<ObjectId> fav = user.getFav();
+
+            System.out.println("this is fav" +  fav);
+
+            if(fav==null)return null;
+
+            return fav;
+        }
+
+        System.out.println("user does not exists");
+        return null;
 
 
     }
