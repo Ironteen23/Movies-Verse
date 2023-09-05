@@ -21,7 +21,7 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private Set<ObjectId> fav;
+    private Set<String> fav;
 
     public User(ObjectId id, String name, String email, String password) {
         this.id = id;
@@ -30,7 +30,7 @@ public class User {
         this.password = password;
     }
 
-    public User(ObjectId id, String name, String email, String password, Set<ObjectId> fav) {
+    public User(ObjectId id, String name, String email, String password, Set<String> fav) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -49,6 +49,12 @@ public class User {
         this.name = name;
         this.password = password;
     }
+
+    public User(String name)
+    {
+        this.name = name;
+    }
+
 
 
 
@@ -84,11 +90,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<ObjectId> getFav() {
+    public Set<String> getFav() {
         return fav;
     }
 
-    public void setFav(Set<ObjectId> fav) {
+    public void setFav(Set<String> fav) {
         this.fav = fav;
     }
 }

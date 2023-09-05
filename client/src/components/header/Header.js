@@ -42,7 +42,7 @@ return (
     <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
             <Navbar.Brand href="/" style={{"color":'gold'}}>
-                <FontAwesomeIcon icon ={faVideoSlash}/>Gold
+                <FontAwesomeIcon icon ={faVideoSlash}/>AniFlix
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
@@ -72,9 +72,13 @@ return (
                 <Link to={"/Profile"}>
                 <div style={{marginRight:"20px"}}>{user.name}</div>
                 </Link>
+
+                <Link to={"/"}>
                 <Button variant="outline-info" onClick={()=>handleLogout()}>
                     Logout
                 </Button >
+                </Link>
+
                 </>
 
                 }

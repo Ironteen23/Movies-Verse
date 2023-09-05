@@ -10,6 +10,9 @@ import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/slices/userSlice';
+
 // import LoadingButton from '@mui/lab/LoadingButton';
 import { LoadingButton } from '@mui/lab';
 
@@ -18,7 +21,7 @@ const Signup = () => {
     const [show , setShow] = useState(false);
     const [loading,setLoading] = useState(false);
 
-
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -95,9 +98,9 @@ const Signup = () => {
 
             const response = await api.post("api/v1/users/signup" , user);
 
-            // console.log("status is" , response.status);
+            console.log("status is" , response);
 
-            if(response.status === 200)
+            if(response?.status === 200)
             {
                 // e.target.reset;
                 setShow(true);
@@ -113,6 +116,9 @@ const Signup = () => {
                   });
                 console.log("Successful");
             setLoading(false);
+
+
+            dispatch(login({name:user.name , isLoggedIn:true , email:user.email}));
                 
                 setTimeout(()=>{
                     redirect();
@@ -121,7 +127,7 @@ const Signup = () => {
                
             }
 
-            else if(response.status === 500)
+            else if(response?.status === 500)
             {
                 console.log("Internal server Error")
             setLoading(false);
@@ -129,11 +135,10 @@ const Signup = () => {
                 return;
             }
 
-            else
-            console.log("DONT KNOW WJHAT HAPPENED")
+           
 
             setLoading(false);
-
+            return;
 
             // console.log("SENDING USER TO SERVER")
             // console.log(user);
@@ -144,7 +149,7 @@ const Signup = () => {
         {       
             setShow(true);
 
-            if(err.response.status === 500){
+            if(err?.response?.status === 500){
                 toast.error("Same Username or Email Already Exists", {
                     position: "bottom-right",
                     autoClose: 5000,

@@ -1,0 +1,15 @@
+.movie-card-cont{
+    
+        height: 300px;
+        width: 200px;
+        border: 1px solid gold;
+        border-radius: 10px;
+        overflow: hidden;
+}
+
+.movie-card-cont > img{
+    height: 100%;
+    width: 100%;
+
+}
+

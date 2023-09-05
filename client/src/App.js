@@ -11,6 +11,7 @@ import Reviews from './components/reviews/Reviews';
 import Trailer from './components/trailer/Trailer';
 import Login from "./components/login/Login";
 import Signup from './components/signup/Signup';
+import Profile from './components/profile/Profile';
 
 function App() {
 
@@ -60,6 +61,7 @@ function App() {
         <Route path="/Reviews/:movieId" element ={<Reviews getMovieData = {getMovieData} movie={movie} reviews ={reviews} setReviews = {setReviews} />}></Route>
         <Route path="/Login" element={<Login/>}></Route>
         <Route path="/Signup" element={<Signup/>}></Route>
+        <Route path="/Profile" element={<Profile/>}></Route>
         </Route>
       </Routes>
     </div>

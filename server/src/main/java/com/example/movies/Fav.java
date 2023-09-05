@@ -4,21 +4,20 @@ import org.bson.types.ObjectId;
 
 public class Fav {
 
-    private ObjectId movie_id;
-
+    private String imdb;
     private  String name;
 
-    public Fav(ObjectId movie_id, String name) {
-        this.movie_id = movie_id;
+    public Fav(String imdb, String name) {
+        this.imdb = imdb;
         this.name = name;
     }
 
-    public ObjectId getMovie_id() {
-        return movie_id;
+    public String getImdb() {
+        return imdb;
     }
 
-    public void setMovie_id(ObjectId movie_id) {
-        this.movie_id = movie_id;
+    public void setImdb(String imdb) {
+        this.imdb = imdb;
     }
 
     public String getName() {
