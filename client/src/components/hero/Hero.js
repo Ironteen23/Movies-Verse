@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Hero.css"
 import Carousel from 'react-material-ui-carousel'
+import { useState } from 'react'
 import { Paper } from '@mui/material'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircle, faCirclePlay } from '@fortawesome/free-solid-svg-icons'
@@ -8,12 +9,16 @@ import { Link , useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 import api from "../../api/axiosConfig";
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const Hero = ({movies}) => {
 
     const navigate = useNavigate();
     const user = useSelector((state)=>state.user.value);
+    const [show,setShow] = useState(false);
 
     function reviews(movieId)
     {
@@ -27,6 +32,22 @@ const Hero = ({movies}) => {
               const res = await  api.post("/api/v1/users/addFav" , fav);
 
               console.log("what up " , res);
+
+              if(res.status === 200)
+              {
+                toast.success("Added to Fav ", {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                  });
+
+                  setShow(true);
+              }
 
 
         } catch (error) {
@@ -65,8 +86,8 @@ const Hero = ({movies}) => {
 
                                     {
                                         user.isLoggedIn ? 
-                                        <div className="movie-review-button-container">
-                                        <Button variant ="info" onClick={() => addFav(movie.imdbId)} >Add to Fav</Button>
+                                        <div className="movie-fav-button-container">
+                                        <Button  variant ="info" onClick={() => addFav(movie.imdbId)} style={{width:"150px" , marginLeft:"10px"}}>Add to Fav</Button>
                                          </div>
 
                                         : null
@@ -81,6 +102,9 @@ const Hero = ({movies}) => {
                 })
             }
         </Carousel>
+        {
+            show ? <ToastContainer/> : null
+        }
         </div>
         </>
   )

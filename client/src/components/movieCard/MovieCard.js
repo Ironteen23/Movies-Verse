@@ -14,12 +14,12 @@ const MovieCard = (data) => {
     const det = data.data;
   return (
     <>
-    <div>
+    <div className='movie-card-outer-cont'>
     
     <div className='movie-card-cont' onClick={() => reviews(det.imdbId)}>
     <img src={det.poster} alt={det.title}/>
     </div>  
-    <div>{det.title}</div>
+    <div style={{textAlign:'center'}}>{det.title}</div>
 
     </div>
     </>
