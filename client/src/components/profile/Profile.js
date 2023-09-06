@@ -23,10 +23,10 @@ const Profile = () => {
            const movie_ids = res.data;
             setArr(movie_ids);
             console.log("herer is " , arr);
-        } catch (error) {
+        } 
+        catch (error) {
             console.log(error);
         }
-
     }
 
     useEffect(()=>{

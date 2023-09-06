@@ -12,6 +12,8 @@ import api from "../../api/axiosConfig";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MovieCard from '../movieCard/MovieCard'
+import Genre from '../genre/Genre'
 
 
 const Hero = ({movies}) => {
@@ -19,6 +21,8 @@ const Hero = ({movies}) => {
     const navigate = useNavigate();
     const user = useSelector((state)=>state.user.value);
     const [show,setShow] = useState(false);
+
+    const genres = ["Fantasy" , "Action" , "Science Fiction" ,"Horror" ,"Animation" ,"Family" , "Adventure"];
 
     function reviews(movieId)
     {
@@ -106,6 +110,30 @@ const Hero = ({movies}) => {
             show ? <ToastContainer/> : null
         }
         </div>
+        <div>
+            <div className='movie-genre-title'> 
+            GENRES 
+            </div>
+
+            <div className='movies-genre-cont'>
+            {
+                genres.map((genre)=>{
+                    return <Genre data={genre}/>
+                })
+            }
+            </div>
+        </div>
+
+
+        <div className='movies-outer-container'>
+            {
+                movies?.map((data)=>{
+                    return <MovieCard data={data}/>
+                })
+            }
+        </div>
+        
+        
         </>
   )
 }

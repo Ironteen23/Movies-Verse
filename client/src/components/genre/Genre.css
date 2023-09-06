@@ -1,0 +1,14 @@
+.genre-cont{
+    height: 30px;
+    width:150px;
+    border-radius: 20px;
+    background-color: red;
+    text-align: center;
+}
+
+.genre-title{
+    /* position: inherit; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
