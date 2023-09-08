@@ -13,8 +13,6 @@ import java.util.*;
 
 @Service
 public class UserService {
-
-
     @Autowired
     MovieRepository movieRepository;
 
@@ -31,11 +29,13 @@ public class UserService {
         Optional<User> a = userRepository.existsByName(s);
         Optional<User> b = userRepository.existsByEmail(e);
 
-        System.out.println("A");
+//        System.out.println("A");
 //        System.out.println("B" + b.isPresent);
 
         if(a.isPresent() || b.isPresent())
         {
+            if(a.isPresent()) System.out.println("a" + a.get());
+            else System.out.println("b"+ b.get());
             throw new IllegalStateException("Given username or Email already exists . please use another ");
         }
 
@@ -147,5 +147,14 @@ public class UserService {
         System.out.println("user not present");
         return null;
 
+    }
+
+    public User getUserById(String id) {
+
+        Optional<User> u = userRepository.findByMongoId(id);
+        if(u.isPresent())
+            return u.get();
+
+        return null;
     }
 }

@@ -2,6 +2,7 @@ package com.example.movies;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.v3.oas.annotations.Operation;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,27 +20,31 @@ public class UserController {
     @Autowired
     private  UserService userService;
 
+    @Operation(summary = " SignUP a User", description = "This api allows you to signup ")
     @PostMapping("/signup")
     public void addUser( @RequestBody User user)
     {
-
         System.out.println("user is "+ user);
 
         userService.addUser(user);
     }
 
+    @Operation(summary = " Get User", description = "This api allows you get a Specific User")
     @GetMapping("/getUser")
     public Optional<User> getUser(@RequestBody User user)
     {
         return userService.getUser(user.getName());
     }
 
+    @Operation(summary = " Login a User", description = "This api allows you to login while auth the request ")
     @PostMapping("/login")
     public void login(@RequestBody User user)
     {
         userService.login(user);
     }
 
+
+    @Operation(summary = " Add Movie to Fav " , description = "This api Adds Movie's ImdbId to your Fav List")
     @PostMapping("/addFav")
     public void addFav(@RequestBody Fav fav)
     {
@@ -56,6 +61,7 @@ public class UserController {
         return s;
     }
 
+    @Operation(summary = "Get all Fav movies" , description = "This api gets all fav movies for a specific user")
     @PostMapping("/getFavList")
     public Set<Movie> getFavList(@RequestBody User user)
     {
@@ -63,5 +69,17 @@ public class UserController {
         Set<Movie> s = userService.getFavList(name);
         return s;
     }
+
+    @PostMapping("/getUserbyId")
+    public User getUserByMongoId(@RequestBody Fav fav)
+    {
+        String id = fav.getImdb();
+        return userService.getUserById(id);
+    }
+
+
+
+
+
 
 }

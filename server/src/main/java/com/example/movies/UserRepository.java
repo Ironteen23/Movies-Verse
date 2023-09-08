@@ -23,5 +23,5 @@ public interface UserRepository extends MongoRepository<User, ObjectId> {
 
 
     @Query("{_id:?0}")
-    Optional<User> findByMongoId(ObjectId userId);
+    Optional<User> findByMongoId(Object userId);
 }

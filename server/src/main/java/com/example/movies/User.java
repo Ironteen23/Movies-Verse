@@ -17,20 +17,20 @@ import java.util.Set;
 public class User {
 
     @Id
-    private ObjectId id;
+    private String id;
     private String name;
     private String email;
     private String password;
     private Set<String> fav;
 
-    public User(ObjectId id, String name, String email, String password) {
+    public User(String id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public User(ObjectId id, String name, String email, String password, Set<String> fav) {
+    public User(String id, String name, String email, String password, Set<String> fav) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -58,11 +58,11 @@ public class User {
 
 
 
-    public ObjectId getId() {
+    public Object getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
