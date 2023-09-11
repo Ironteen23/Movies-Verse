@@ -2,8 +2,14 @@
     height: 30px;
     width:150px;
     border-radius: 20px;
-    background-color: red;
+    /* background-color: red; */
+    border: 1px solid hsl(187, 90%, 45%);
     text-align: center;
+}
+
+.genre-cont:hover{
+    background-color:  hsl(187, 90%, 45%);
+    color:black;
 }
 
 .genre-title{

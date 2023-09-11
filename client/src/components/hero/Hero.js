@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Hero.css"
 import Carousel from 'react-material-ui-carousel'
 import { useState } from 'react'
@@ -21,12 +21,32 @@ const Hero = ({movies}) => {
     const navigate = useNavigate();
     const user = useSelector((state)=>state.user.value);
     const [show,setShow] = useState(false);
-
+    const [render,setRender] = useState(false);
+    let updatedArr = movies;
     const genres = ["Fantasy" , "Action" , "Science Fiction" ,"Horror" ,"Animation" ,"Family" , "Adventure"];
 
     function reviews(movieId)
     {
         navigate(`/Reviews/${movieId}`);
+    }
+
+    // useEffect(()=>{
+
+    // },[updatedArr]);
+
+    const handleGenreClick = (genre)=>{
+        console.log("Clciked");
+        const arr = movies;
+        updatedArr = [];
+        arr.map((movie)=>{
+
+            movie.genres.map((i)=>{
+                if(i===genre)
+                updatedArr.push(movie);
+            });
+        })
+        
+        console.log(updatedArr,"THIS IS ARR");
     }
 
     const addFav = async(movieId)=>{
@@ -117,17 +137,16 @@ const Hero = ({movies}) => {
 
             <div className='movies-genre-cont'>
             {
-                genres.map((genre)=>{
-                    return <Genre data={genre}/>
+                genres.map((genre,i)=>{
+                    return <Genre data={genre} handleClick={handleGenreClick}  key={i}/>
                 })
             }
             </div>
         </div>
 
-
         <div className='movies-outer-container'>
             {
-                movies?.map((data)=>{
+                updatedArr?.map((data)=>{
                     return <MovieCard data={data}/>
                 })
             }

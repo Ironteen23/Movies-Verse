@@ -1,20 +1,17 @@
 package com.example.movies;
 
 import io.swagger.v3.oas.annotations.Operation;
+import org.bson.json.JsonObject;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-
 @RequestMapping("/api/v1/movies")
 public class MovieController {
 
@@ -42,6 +39,16 @@ public class MovieController {
                 return s;
 
     }
+
+    @Operation(summary = "GET TRENDING MOVIES")
+    @GetMapping("/trending/{pageNo}")
+    public String getTrendingMovies(@PathVariable String pageNo)
+    {
+        String lol = movieService.getTrendingMovies(pageNo);
+        //construct jsonObject here
+        return lol;
+    }
+
 
 
 }

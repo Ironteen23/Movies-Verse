@@ -12,6 +12,7 @@ import Trailer from './components/trailer/Trailer';
 import Login from "./components/login/Login";
 import Signup from './components/signup/Signup';
 import Profile from './components/profile/Profile';
+import Trending from './components/trending/Trending';
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
         <Route path="/Login" element={<Login/>}></Route>
         <Route path="/Signup" element={<Signup/>}></Route>
         <Route path="/Profile" element={<Profile/>}></Route>
+        <Route path="/Trending" element={<Trending/>}></Route>
         </Route>
       </Routes>
     </div>

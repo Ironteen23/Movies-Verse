@@ -130,7 +130,7 @@ const Signup = () => {
             else if(response?.status === 500)
             {
                 console.log("Internal server Error")
-            setLoading(false);
+              setLoading(false);
 
                 return;
             }

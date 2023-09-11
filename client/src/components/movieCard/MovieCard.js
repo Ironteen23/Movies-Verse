@@ -11,12 +11,13 @@ const MovieCard = (data) => {
     }
 
     // console.log("this is the data" , data);
-    const det = data.data;
+  const det = data.data;
+  
   return (
     <>
     <div className='movie-card-outer-cont'>
     
-    <div className='movie-card-cont' onClick={() => reviews(det.imdbId)}>
+    <div className='movie-card-cont' onClick={() => reviews(det.imdbId)} style={{cursor:'pointer'}}>
     <img src={det.poster} alt={det.title}/>
     </div>  
     <div style={{textAlign:'center'}}>{det.title}</div>

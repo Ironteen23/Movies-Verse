@@ -1,0 +1,12 @@
+.img-cont{
+    height: 240px;
+    width:220px;
+    /* background-color: red; */
+    margin-left: 10px;
+    margin-right:10px;
+}
+
+.title-cont{
+    color: white;
+    font-size: 1rem;
+}

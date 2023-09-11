@@ -1,14 +1,14 @@
 import React from 'react'
 import "./Genre.css";
 
-const Genre = (data) => {
+const Genre = ({data,handleClick}) => {
     console.log("data is ", data);
   return (
     <>
-    <div style={{cursor:'pointer'}}>
+    <div style={{cursor:'pointer'}} onClick={()=>handleClick(data)}>
         <div className='genre-cont'>
             <div className='genre-title'>
-                {data.data}
+                {data}
             </div>
         </div>
     </div>
