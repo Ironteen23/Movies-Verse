@@ -36,8 +36,7 @@ public class MovieController {
     public Set<Movie>  getMovieByGenre(@RequestBody ArrayList<String> arr)
     {
         Set<Movie> s = movieService.getMoviesByGenre(arr);
-                return s;
-
+        return s;
     }
 
     @Operation(summary = "GET TRENDING MOVIES")

@@ -49,7 +49,7 @@ public class MovieService {
 
          String str = restTemplate.getForObject(url,String.class).toString();
 
-        System.out.println("jsonObject is " + str);
+//        System.out.println("jsonObject is " + str);
          return str;
 
 
