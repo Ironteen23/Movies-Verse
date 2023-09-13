@@ -55,6 +55,10 @@ const Trending = () => {
     <div className='page-outer-cont'>
 
         {
+            pageNo!=1 ? <div onClick={()=>handleClick(pageNo-1)}  style={{color:"hsl(187, 90%, 45%)" , fontSize:"1.2rem" , cursor:"pointer"}} > ＜ </div> : null
+        }
+        {   
+        
             pages.map((i,indx)=>{
                 
                     return pageNo !== i ?
@@ -62,6 +66,11 @@ const Trending = () => {
                     : <div className='page-used-cont' key={i}>{i}</div>
                 
             })
+
+
+        }
+        {
+            pageNo!=19 ? <div onClick={()=>handleClick(pageNo+1)} style={{color:"hsl(187, 90%, 45%)" , fontSize:"1.2rem" , cursor:"pointer"}} > ＞ </div> : null
         }
 
     </div>
